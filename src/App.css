@@ -1,0 +1,1510 @@
+/*
+|--------------------------------------------------------------------------
+| 1. IMPORTS  
+|--------------------------------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Paytone+One&display=swap');
+
+
+/*
+|--------------------------------------------------------------------------
+| 2. BASE AND UTILITY STYLES
+|--------------------------------------------------------------------------
+*/
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif !important;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 3. NAVIGATION STYLES
+|--------------------------------------------------------------------------
+*/
+
+nav {
+    background-color: #3665F9; 
+    display: flex;
+    align-items: center;
+    height: 70px;
+    /* padding: 0 122px; */
+    justify-content: space-evenly;
+    position: relative;
+
+    .nav-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 32px;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        div {
+            color: #FFF;
+        }
+
+        li {
+            font-size: 16px;
+            color: #FFF; 
+        }
+    }
+
+    .login {
+        padding: 12px 32px;
+        border: 1px solid #3665F9; 
+        border-radius: 58px;
+        background-color: #F8F8F8;
+        color: #3665F9 !important;
+        text-transform: capitalize;
+        z-index: 10;
+    }
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;
+}
+
+.nav-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #FFF;
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) { 
+    
+    nav {
+        padding: 0 20px;
+        align-items: center;
+        justify-content: unset;
+        gap: 26px;
+    }
+
+    .nav-toggle {
+        display: block; 
+    }
+    nav .nav-list,
+    .login {
+        display: none;
+    }
+    
+    nav .nav-list {
+        position: absolute; 
+        top: 70px; 
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: #3665F9; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+    
+    .nav-list li {
+        width: 100%;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-list div {
+        display: none;
+    }
+    
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 4. MARQUEE & ANIMATION STYLES
+|--------------------------------------------------------------------------
+*/
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.css-marquee-container,
+.css-marquee-container-2 {
+    background-image: radial-gradient(circle, #C2F85C 0%, #EAFDD0 100%);
+    border: 0 #05903D;
+    padding: 12.54px 0;
+    overflow: hidden;
+    color: #3665F9; 
+    white-space: nowrap;
+}
+
+.css-marquee-content {
+    animation: scroll-left 20s linear infinite;
+    display: inline-block;
+    min-width: 100%;
+}
+
+.css-marquee-content>span {
+    padding-right: 15px;
+}
+
+.marquee-bold-text {
+    font-weight: bold;
+}
+
+.css-marquee-container:hover .css-marquee-content {
+    animation-play-state: paused;
+}
+
+/* Diagonal Marquee */
+@keyframes marquee_scroll_a {
+    0% {
+        transform: rotate(10deg) translateX(-50%);
+    }
+
+    100% {
+        transform: rotate(10deg) translateX(0%);
+    }
+}
+
+@keyframes marquee_scroll_b {
+    0% {
+        transform: rotate(-10deg) translateX(-50%);
+    }
+
+    100% {
+        transform: rotate(-10deg) translateX(0);
+    }
+}
+
+.diagonal_marquee {
+    position: relative;
+    height: 674px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Diagonal Marquee Background Gradients/Blurs */
+.diagonal_marquee::before {
+    content: '';
+    width: 573px;
+    height: 597px;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    background-image: radial-gradient(circle, #C2F85C 0%, #EAFDD0 100%);
+    border-radius: 301px;
+    filter: blur(161px);
+    background-size: cover;
+    z-index: -1;
+    overflow: hidden;
+    border: 2px solid red;
+}
+
+.diagonal_marquee::after {
+    content: '';
+    width: 344px;
+    height: 429px;
+    position: absolute;
+    top: -96px;
+    left: 10px;
+    background-image: radial-gradient(circle, #C2F85C 0%, #EAFDD0 100%);
+    border-radius: 50%;
+    filter: blur(350px);
+    background-size: cover;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Diagonal Marquee Content & Animation */
+.diagonal_marquee .MarqueeContentA {
+    animation: marquee_scroll_a 40s linear infinite;
+    display: flex;
+}
+
+.diagonal_marquee .MarqueeContentA .MarqueeA {
+    background-image: linear-gradient(to right, #C2F85C 0%, #EAFDD0 100%);
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.diagonal_marquee .MarqueeContentB {
+    animation: marquee_scroll_b 40s linear infinite;
+    display: flex;
+}
+
+.diagonal_marquee .MarqueeContentB .MarqueeB {
+    background-image: linear-gradient(to right, #C0F2FF 0%, #FFFFFF 100%);
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.diagonal_marquee .Marquee {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 32px;
+}
+
+.diagonal_marquee .Marquee li {
+    flex-shrink: 0;
+    font-family: "Nunito Sans", sans-serif !important;
+    font-size: 24px;
+    display: flex;
+    font-weight: 900;
+    color: #3665F9; 
+    gap: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2.88px;
+}
+ @media (max-width: 768px){
+    @keyframes marquee_scroll_a {
+    0% {
+        transform: rotate(18deg) translateX(-50%);
+    }
+
+    100% {
+        transform: rotate(18deg) translateX(0%);
+    }
+}
+
+@keyframes marquee_scroll_b {
+    0% {
+        transform: rotate(-18deg) translateX(-50%);
+    }
+
+    100% {
+        transform: rotate(-18deg) translateX(0);
+    }
+}
+.diagonal_marquee .MarqueeContentA .MarqueeA {
+    padding: 5px;
+}
+.diagonal_marquee .MarqueeContentB .MarqueeB{
+    padding: 5px;
+}
+    .diagonal_marquee{
+        height: unset;
+        min-height: 272px;
+        filter: blur(0.34px);
+    }
+    .diagonal_marquee .Marquee li{
+        font-size: 8.06px;
+        align-items: center;
+        letter-spacing: 2.88px ;
+        img{
+            width: 8.73px;
+            height: 9.07px;
+            object-fit: cover;
+        }
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 5. WHY HELPSTIR SECTION
+|--------------------------------------------------------------------------
+*/
+.whyHelpstir {
+    border-top: 2px solid #3665F9; 
+    padding: 0 0 122px;
+    position: relative;
+}
+
+.whyHelpstir::after {
+    content: '';
+    position: absolute;
+    background-image: url(/public/why-helpstir/bottom-line.png);
+    z-index: 2;
+    width: 100%;
+    height: 49px;
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    bottom: 0;
+    transform: rotate(0deg);
+}
+
+.whyHelpstir .header {
+    padding: 120px 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whyHelpstir .header h2 {
+    font-family: "Nunito Sans", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #3665F9; 
+    font-size: 72px;
+    margin: 0;
+}
+
+.whyHelpstir .un-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+}
+
+.whyHelpstir .un-list li {
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 324px;
+
+    h3 {
+        font-family: "Paytone One", sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        text-align: center;
+        margin: 0;
+        padding: 0 0 20px;
+        text-transform: capitalize;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-size: 20px;
+    }
+}
+
+.whyHelpstir .un-list li:hover:after {
+    content: '';
+    position: absolute;
+    background-image: url(/public/why-helpstir/pattern.png);
+    z-index: -1;
+    width: 517px;
+    height: 465px;
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    filter: blur(20.8px);
+    top: -13px;
+}
+@media (max-width:1024px) {
+    .whyHelpstir .header h2
+    {
+            font-size: 56px;
+    }       
+    .whyHelpstir .un-list{
+            flex-direction: column;
+            align-items: center;    
+    } 
+    .whyHelpstir .un-list li{ 
+        max-width: 447px;
+    } 
+}
+ @media (max-width: 768px){
+    .whyHelpstir .header {
+                padding: 45px 0 46px;
+    }
+    .whyHelpstir .header h2 {
+        font-size: 36px;
+    }
+    .whyHelpstir .un-list{
+        flex-direction: column;
+        align-items: center;
+    }
+    .whyHelpstir .un-list li{
+        max-width: 324px;
+        padding: 32px 16px ;
+        h3{
+            font-size: 20px;
+        }
+        p{
+            font-size: 16px;
+        }
+        
+    }
+    .whyHelpstir .un-list li:hover:after{
+        width: 347px;
+        height: 282px;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 6. HOW HELPSTIR WORKS SECTION
+|--------------------------------------------------------------------------
+*/
+
+.helpstirwork_section {
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 120px 0 80px;
+    }
+}
+
+.helpstirwork_section .header h2 {
+    font-family: "Nunito Sans", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #3665F9; 
+    font-size: 72px;
+    margin: 0 0 80px;
+    text-align: center;
+
+    span {
+        font-size: unset;
+    }
+}
+
+.helpstirwork_section .card-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &::after {
+        content: '';
+        width: 1280px;
+        height: 597px;
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        background-image: radial-gradient(circle, #3665F9 0%, #FFFFFF 100%);
+        border-radius: 301px;
+        filter: blur(161px);
+        background-size: cover;
+        z-index: -1;
+        overflow: hidden;
+        border: 2px solid red;
+    }
+
+}
+
+.helpstirwork_section .card-container li {
+    display: flex;
+    justify-content: center;
+    gap: 71px;
+    padding: 20px;
+    align-items: center;
+    width: fit-content;
+    height: 543px;
+    background-color: rgba(255, 255, 255, 0.28);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: none;
+    border-radius: 58px;
+
+    &.active {
+        width: 721px;
+
+        .content {
+            display: block;
+        }
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        p {
+            display: flex;
+            align-items: baseline;
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 40px;
+            line-height: 20px;
+
+            span {
+                font-size: 124px;
+            }
+        }
+    }
+}
+
+.helpstirwork_section .content {
+    display: none;
+
+    h4 {
+        padding: 0;
+        margin: 0;
+        font-family: "Paytone One", sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+    }
+
+
+    p {
+        padding: 0;
+        margin: 32px 0 40px;
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 20px;
+        max-width: 335px;
+    }
+
+    a {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 20px;
+        line-height: 20px;
+        padding: 16px 84px;
+        border-radius: 58px;
+        border: 2px solid #3665F9;
+        color: #3665F9 !important;
+    }
+}
+
+.helpstirwork_section .step {
+    display: flex;
+    align-items: end;
+
+    img {
+        width: 48px;
+        height: 28px;
+    }
+
+    p {
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 700;
+    }
+  
+}
+/* ... (Existing Desktop Styles for Section 6 remain above this block) ... */
+
+/* -------------------------------------------
+   ➡️ TABLET/SMALL LAPTOP STYLES (≤ 1024px)
+      Objective: Mirror the 768px Vertical Stack and Accordion Logic
+   ------------------------------------------- */
+   @media (max-width: 1024px) {
+    .helpstirwork_section .header h2 {
+        font-size: 60px;
+        margin-bottom: 60px;
+    }
+    
+    .helpstirwork_section .card-container {
+        /* Override desktop properties */
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center; /* Center the fixed-width cards */
+        padding: 0 40px;
+    }
+
+    .helpstirwork_section .card-container li {
+        width: 530px; /* 💥 The specific width you requested */
+        max-width: 100%; /* Ensures it doesn't overflow if the screen is < 530px */
+        height: auto;
+        min-height: 180px;
+        border-left: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 30px;
+        padding: 30px;
+        
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    .helpstirwork_section .card-container li.active {
+        width: 530px; /* Maintaining the requested width when active */
+        padding-bottom: 40px;
+    }
+
+    .helpstirwork_section .content {
+        display: none !important;
+        width: 100%;
+        text-align: left;
+    }
+
+    .helpstirwork_section .card-container li.active .content {
+        display: block !important;
+        padding-top: 0;
+    }
+    
+    .helpstirwork_section .card-container li.active .step {
+        display: none;
+    }
+
+    .helpstirwork_section .content h4 {
+        font-size: 28px;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .helpstirwork_section .content p {
+        font-size: 18px;
+        margin: 20px 0 30px;
+        max-width: none;
+    }
+
+    .helpstirwork_section .content a {
+        padding: 14px 60px;
+        font-size: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        line-height: normal;
+    }
+
+    .helpstirwork_section .step {
+        height: auto;
+        flex-direction: row;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .helpstirwork_section .step p {
+        font-size: 18px;
+        line-height: normal;
+        margin-left: 10px;
+    }
+
+    .helpstirwork_section .step p span {
+        font-size: 60px;
+    }
+
+    .helpstirwork_section .step img {
+        display: none;
+    }
+}
+/* -------------------------------------------
+   ➡️ MOBILE STYLES (≤ 768px) - Your Original Best Code (Minor Refinements)
+      Retaining your preferred logic.
+   ------------------------------------------- */
+@media (max-width: 768px) {
+    .helpstirwork_section .header {
+        padding: 45px 0 46px;
+    }
+
+    .helpstirwork_section .header h2 {
+        font-size: 36px;
+        margin: 0;
+        max-width: 302px;
+    }
+
+    .helpstirwork_section .card-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        padding: 0 20px;
+    }
+
+    .helpstirwork_section .card-container li {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 150px;
+        border-left: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        padding: 20px;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    .helpstirwork_section .card-container li.active {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .helpstirwork_section .content {
+        display: none !important;
+        width: 100%;
+    }
+
+    .helpstirwork_section .card-container li.active .content {
+        display: block !important;
+        padding-top: 0; 
+    }
+
+    .helpstirwork_section .card-container li.active .step {
+        display: none;
+    }
+
+    .helpstirwork_section .content h4 {
+        font-size: 20px;
+        padding-top: 0; 
+        margin-top: 0;
+    }
+
+    .helpstirwork_section .content p {
+        font-size: 16px;
+        margin: 12px 0 15px;
+        max-width: none;
+    }
+
+    .helpstirwork_section .content a {
+        padding: 12.5px 34px;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20.8px;
+        line-height: normal;
+    }
+
+    .helpstirwork_section .step {
+        height: auto;
+        flex-direction: row;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .helpstirwork_section .step p {
+        font-size: 13.92px !important;
+        line-height: normal;
+        margin-left: 10px;
+    }
+
+    .helpstirwork_section .step p span {
+        font-size: 36px !important;
+    }
+
+    .helpstirwork_section .step img {
+        display: none;
+    }
+}
+/* --- Mobile Styles (Pure CSS Overrides) --- */
+
+ /* @media (max-width: 768px){
+    .helpstirwork_section .card-container li{
+         &.active {
+        width: 100%;
+
+        .content {
+            display: block;
+        }
+    }
+    }
+    .helpstirwork_section .header{
+             padding: 45px 0 46px;
+             h2{
+               font-size: 36px;
+               margin: 0;
+               max-width: 302px;
+         }
+    }
+    .helpstirwork_section .card-container li{
+        h4{
+            font-size: 20px;
+        }
+        p{
+            font-size: 18px
+        };
+    }
+    
+    .helpstirwork_section .content{
+        h4{
+            font-size: 20px;
+        }
+        p{
+            font-size: 16px;
+            margin: 12px 0 15px;
+            line-height: 21.12px;
+        }
+        a{
+            border-radius: 20.8px;
+            text-align: center;
+            padding: 12.5px 34px;
+            font-size: 12px;
+            line-height: 7px;
+        }
+    }
+    .helpstirwork_section .step{
+        p{
+            font-size: 13.92px !important;
+            color: #3665F9;
+            span{
+                font-size: 36px !important;
+            }
+        }
+    }
+} */
+
+/*
+|--------------------------------------------------------------------------
+| 7. HELPSTIR FOR EVERYONE SECTION
+|--------------------------------------------------------------------------
+*/
+.Helpstir-for-Everyone {
+    padding: 120px 0 120px;
+    position: relative;
+
+    .header {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 80px;
+    }
+}
+
+
+.Helpstir-for-Everyone:after {
+    content: '';
+    position: absolute;
+    background-image: url(/public/why-helpstir/bottom-line.png);
+    z-index: 2;
+    width: 100%;
+    height: 49px;
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    bottom: -37px;
+    transform: rotate(0deg);
+}
+
+.Helpstir-for-Everyone .header h2 {
+    font-family: "Nunito Sans", sans-serif;
+    max-width: 740px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #3665F9;
+    font-size: 72px;
+    text-align: center;
+    margin: 0;
+    span {
+        font-size: unset;
+    }
+}
+
+.Helpstir-for-Everyone .card-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 41px;
+    margin: 0;
+    padding: 0;
+}
+
+.Helpstir-for-Everyone .card-list li {
+    cursor: pointer;
+    width: 324px;
+    height: 384px;
+    border: 2px solid #3665F9; 
+    padding: 20px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.Helpstir-for-Everyone .card-list li:hover:before {
+    content: '';
+    position: absolute;
+    background-image: url(/public/why-helpstir/pattern.png);
+    z-index: -1;
+    width: 465px;
+    height: 384px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(22.8px);
+    right: 0;
+    top: 0;
+    left: 0;
+}
+
+.Helpstir-for-Everyone .card-list li:hover h3 {
+    display: none;
+}
+
+.Helpstir-for-Everyone .card-list li:hover .text {
+    display: flex;
+}
+
+.Helpstir-for-Everyone .card-list li h3 {
+    font-family: "Paytone One", sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    color: black;
+}
+
+.Helpstir-for-Everyone .card-list li .text {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+    font-weight: 400;   
+
+    p {
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        line-height: 21.12px;
+    }
+
+    a {
+        line-height: 20px;
+        color: #3665F9 !important; 
+        padding: 16px;
+        border: 1px solid #3665F9; 
+        border-radius: 54px;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+}
+ @media (max-width: 768px){
+    .Helpstir-for-Everyone .card-list li:hover:before{
+        width: 347px !important;
+        height: 282px !important;
+    }
+    .Helpstir-for-Everyone{
+        padding: 40px 0 45px;
+    }
+    .Helpstir-for-Everyone .header h2{
+        font-size: 36px;
+    }
+    .Helpstir-for-Everyone .card-list {
+        flex-direction: column;
+    }
+    .Helpstir-for-Everyone .card-list li{
+        width: 324px;
+        height: 236px;
+    }
+    .Helpstir-for-Everyone .card-list li .text{
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        p{
+            font-size: 14px;
+            line-height: 21.12px;
+        }
+        a{
+            width: 118px;
+            height: 37px;;
+            border-radius: 20.18px;
+            padding: 12.5px 34px;
+            font-size: 12px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+    }
+    
+}
+/*
+|--------------------------------------------------------------------------
+| 8. OUR SOCIAL SECTION
+|--------------------------------------------------------------------------
+*/
+.our-social {
+    padding: 120px 0 154px 0;
+
+    .header {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 60px;
+        h2 {
+            font-family: "Nunito Sans", sans-serif;
+            max-width: 740px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #3665F9;
+            font-size: 72px;
+            text-align: center;
+            margin: 0;
+        }
+    }
+}
+
+.our-social .insta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 39px;
+
+    .insta-profile {
+        display: flex;
+        gap: 40px;
+
+        img {
+            width: 102px;
+            height: 102px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+        }
+
+        .text {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            h4 {
+                font-family: "Paytone One", sans-serif;
+                font-size: 32px;
+                font-weight: 400;
+                margin: 0;
+                text-decoration: underline;
+            }
+
+            span {
+                font-family: "Nunito Sans", sans-serif;
+                font-weight: 400;
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 19px 0 0 0;
+            display: flex;
+            align-items: center;
+            gap: 81px;
+            font-size: 20px;
+            color: #697A88;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
+@media (max-width: 768px){
+    .our-social{
+        padding: 45px 0 65px;
+        
+    }
+    .our-social .header{
+        padding-bottom: 18px;
+            h2{
+                font-size: 36px;
+            }
+    }
+    .our-social .insta-content .insta-profile  img{
+            width: 52px;
+            height: 52px;
+    
+    }
+    .our-social .insta-content .insta-profile .text{
+        h4{
+            font-size: 20px;
+        }
+        span{
+            font-size: 16px;
+        }
+    }
+    .our-social .insta-content .insta-profile ul{
+        gap: 35px;
+        margin: 13px 0 0 0;
+        li{
+            font-size: 16px ;
+        }
+    }
+    .our-social .insta-content img{
+        width: 320px;
+        height: 546px;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 9. PARTNERS SECTION (Marquee)
+|--------------------------------------------------------------------------
+*/
+.Partners {
+    position: relative;
+    background-color: #F8F8F8; 
+    padding: 11px 0; 
+}
+
+.Partners::after {
+    content: '';
+    position: absolute;
+    background-image: url(/public/why-helpstir/bottom-line.png);
+    z-index: 2;
+    width: 100%;
+    height: 27px;
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    bottom: -35px;
+    transform: rotate(0deg);
+}
+
+.Partners .MarqueeContainer {
+    overflow: hidden;
+    width: 100%;
+}
+
+.Partners .MarqueeContent {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 60s linear infinite;
+    gap: 60px; 
+}
+
+.PartnerList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 60px; 
+    white-space: nowrap;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-1 * (5 * 234px + 4 * 60px))); 
+    }
+}
+
+.PartnerItem {
+    width: 234px; 
+    height: 234px; 
+    border: 2px solid rgba(118, 192, 77, 0.1);
+    border-radius: 24px;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.PartnerItem img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+.PartnerItem--smile {
+    background: rgba(118, 192, 77, 0.1); 
+}
+
+.PartnerItem--smile img {
+    width: 198px;
+    height: 155px;
+}
+
+.PartnerItem--maya {
+    background-color: rgba(150, 81, 145, 0.08); 
+}
+
+.PartnerItem--maya img {
+    width: 191px;
+    height: 107px;
+    object-fit: cover;
+}
+
+.PartnerItem--jaago-bharat {
+    background-color: rgba(38, 71, 150, 0.08); 
+    flex-direction: column;
+}
+
+.PartnerItem--jaago-bharat img {
+    width: 82px;
+    height: 114px;
+}
+
+.PartnerItem--jaago-bharat p {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.PartnerItem--jaaga-bharat {
+    background-color: rgba(229, 122, 29, 0.08); 
+    flex-direction: column;
+}
+
+.PartnerItem--jaaga-bharat img {
+    width: 148px;
+    height: 169px;
+}
+@media (max-width: 768px){
+    .Partners .MarqueeContent {
+        gap: 34px;
+    }
+    .PartnerList {
+        gap: 34px;
+    }
+    .PartnerItem {
+        width: 135px;
+        height: 135px;
+        object-fit: cover;
+    }
+    .PartnerItem--smile img {
+        width: 114px;
+        height: 89px;
+        object-fit: cover;
+    }
+    .PartnerItem--maya img {
+        width: 111px;
+        height: 62px;
+        object-fit: cover;
+    }
+    .PartnerItem--jaago-bharat img {
+        width: 47px;
+        height: 75px;
+        object-fit: cover;
+    }
+    .PartnerItem--jaaga-bharat img {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 10. TEAM SECTION
+|--------------------------------------------------------------------------
+*/
+.team {
+    padding-bottom: 120px;
+    background-color: #F8F8F8; 
+}
+
+.team__header {
+    display: flex;
+    justify-content: center;
+    padding: 120px 0 80px;
+}
+
+.team__title {
+    font-family: "Nunito Sans", sans-serif;
+    max-width: 740px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #3665F9;
+    font-size: 72px;
+    text-align: center;
+    margin: 0;
+}
+
+.team__list-container {
+    display: flex;
+    justify-content: center;
+}
+
+.team__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    column-count: 2;
+    column-gap: 222px;
+    width: max-content;
+}
+
+.team-member {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 128px; 
+}
+
+.team__list .team-member:nth-child(1) {
+    margin-top: 80px; 
+}
+
+.team-member__image {
+    width: 326px;
+    height: 384px;
+    border-radius: 12px; 
+    border: 2px solid #909498; 
+}
+
+.team-member__details {
+    border: 2px solid #909498;
+    border-top: unset;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #FFF;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #3665F9; 
+    border-radius: 0 0 12px 12px;
+}
+
+.team-member__name {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+}
+
+.team-member__role {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+@media (max-width: 768px) {
+    .team{
+        padding-bottom: 102px;
+    }
+    .team .team__header{
+        padding: 60px 0 41px;
+    }
+    .team .team__header .team__title{
+        font-size: 36px;
+    }
+    .team .team__list{
+        column-count: 1;
+        column-gap: 0px;
+    }
+    .team .team__list .team-member{
+        margin-bottom: 52px;
+        &:last-child{
+            margin-bottom: 0px;
+        }
+    }
+    .team__list .team-member:nth-child(1) {
+        margin-top: 0px;
+    }
+    .team .team__list .team-member:nth-child(2n){
+        /* margin-right: -20px; */
+    }
+    .team-member__image{
+        width: 280px;
+        height: 330px;
+    }
+    .team-member__name{
+        font-size: 20.61px;
+    }
+    .team-member__role{
+        font-size: 17.18px;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 11. FOOTER STYLES
+|--------------------------------------------------------------------------
+*/
+.footer {
+    position: relative;
+    width: 100%;
+    height: 405px;
+    display: flex;
+  
+}
+  .footer::before{
+        content: '';
+        position: absolute;
+        background-image: url(/public/footer-background.svg);
+        z-index: 2;
+        max-width: 12383px;
+        height: 405px;
+        background-size: cover;
+        background-position: center;
+        left: 0;
+        top: -35px;
+
+    }
+.footer .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 95px;
+}
+
+.footer .container .row:first-child {
+    gap: 360px;
+}
+
+.footer .container.logo img {
+    width: 162px;
+    height: 23px;
+}
+
+.footer .container .social-links {
+    margin: 30px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 11px;
+}
+
+.footer .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.footer .text p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #758695;
+}
+@media (max-width: 768px)  {
+    .footer{
+        height: 326px;
+    }
+    .footer .container .row:first-child{
+        gap: unset;
+    }
+    .footer .container{
+        gap: 59px   ;
+    }
+}
