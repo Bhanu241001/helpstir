@@ -614,12 +614,7 @@ nav {
     }
   
 }
-/* ... (Existing Desktop Styles for Section 6 remain above this block) ... */
 
-/* -------------------------------------------
-   ➡️ TABLET/SMALL LAPTOP STYLES (≤ 1024px)
-      Objective: Mirror the 768px Vertical Stack and Accordion Logic
-   ------------------------------------------- */
    @media (max-width: 1024px) {
     .helpstirwork_section .header h2 {
         font-size: 60px;
@@ -716,10 +711,7 @@ nav {
         display: none;
     }
 }
-/* -------------------------------------------
-   ➡️ MOBILE STYLES (≤ 768px) - Your Original Best Code (Minor Refinements)
-      Retaining your preferred logic.
-   ------------------------------------------- */
+
 @media (max-width: 768px) {
     .helpstirwork_section .header {
         padding: 45px 0 46px;
@@ -817,62 +809,6 @@ nav {
         display: none;
     }
 }
-/* --- Mobile Styles (Pure CSS Overrides) --- */
-
- /* @media (max-width: 768px){
-    .helpstirwork_section .card-container li{
-         &.active {
-        width: 100%;
-
-        .content {
-            display: block;
-        }
-    }
-    }
-    .helpstirwork_section .header{
-             padding: 45px 0 46px;
-             h2{
-               font-size: 36px;
-               margin: 0;
-               max-width: 302px;
-         }
-    }
-    .helpstirwork_section .card-container li{
-        h4{
-            font-size: 20px;
-        }
-        p{
-            font-size: 18px
-        };
-    }
-    
-    .helpstirwork_section .content{
-        h4{
-            font-size: 20px;
-        }
-        p{
-            font-size: 16px;
-            margin: 12px 0 15px;
-            line-height: 21.12px;
-        }
-        a{
-            border-radius: 20.8px;
-            text-align: center;
-            padding: 12.5px 34px;
-            font-size: 12px;
-            line-height: 7px;
-        }
-    }
-    .helpstirwork_section .step{
-        p{
-            font-size: 13.92px !important;
-            color: #3665F9;
-            span{
-                font-size: 36px !important;
-            }
-        }
-    }
-} */
 
 /*
 |--------------------------------------------------------------------------
